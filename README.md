@@ -282,24 +282,24 @@ return 0;
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
-int *v,n,i;
-scanf("%d",&n);
-v = (int *)malloc(n*sizeof(int));
-for(i=0;i<n;i++){
-   scanf("%d",(v+i));
-}
-for(i=0;i<n;i++){
-   printf("%d",*(v+i));
-}
-for(i=0;i<n;i++){
-   int aux;
-for(int j=0;j<n;j++){
-    if(*(v+i)<*(v+j)){
+  int *v,n,i;
+  scanf("%d",&n);
+  v = (int *)malloc(n*sizeof(int));
+  for(i=0;i<n;i++){
+     scanf("%d",(v+i));
+  }
+  for(i=0;i<n;i++){
+     printf("%d",*(v+i));
+  }
+  for(i=0;i<n;i++){
+     int aux;
+  for(int j=0;j<n;j++){
+        if(*(v+i)<*(v+j)){
         aux=*(v+i);
         *(v+i)=*(v+j);
         *(v+j)=aux;
     }
-}
+  }
 }
 for(i=0;i<n;i++){
    printf("%d",*(v+i));
@@ -314,25 +314,26 @@ return 0;
 ```c
 #include<stdio.h>
 #include<stdlib.h>
+
 int compara(const void *a,const void *b){//é uma função que compara dois valores retornando um inteiro
-return *(int*)a-*(int*)b;//essa funcao faz parte da chamada da funçao qsort da stdlib
+    return *(int*)a-*(int*)b;//essa funcao faz parte da chamada da funçao qsort da stdlib
 }
 int main(){
-double tempo;
-int *v,n,i,(*comp)();//dando nome às variáveis que serão utilizadas
-comp=compara;//comp é o ponteiro para a funçao de comparação
-scanf("%d",&n);//pedindo ao usuario o tamanho do vetor
-v = (int *)malloc(n*sizeof(int));//reservando espaço para o vetor v com alocação dinâmica
-for(i=0;i<n;i++){
-   //scanf("%d",(v+i));//inserindo elementos no vetor
-    *(v+i)=n-i;
-}
-qsort(v,n,sizeof(int),comp);//chamada da função qsort usando um ponteiro para a funçao de comparação
-for(i=0;i<n;i++){
-   printf("%d \n",*(v+i));//mostrando elementos ordenados pela função qsort;
-}
-free(v);//liberando o espaço ocupado pelo vetor;
-return 0;
+  double tempo;
+  int *v,n,i,(*comp)();//dando nome às variáveis que serão utilizadas
+   comp=compara;//comp é o ponteiro para a funçao de comparação
+  scanf("%d",&n);//pedindo ao usuario o tamanho do vetor
+  v = (int *)malloc(n*sizeof(int));//reservando espaço para o vetor v com alocação dinâmica
+  for(i=0;i<n;i++){
+     //scanf("%d",(v+i));//inserindo elementos no vetor
+     *(v+i)=n-i;
+  }
+  qsort(v,n,sizeof(int),comp);//chamada da função qsort usando um ponteiro para a funçao de comparação
+  for(i=0;i<n;i++){
+     printf("%d \n",*(v+i));//mostrando elementos ordenados pela função qsort;
+  }
+  free(v);//liberando o espaço ocupado pelo vetor;
+  return 0;
 }
 ```
 ## Questão 16
@@ -410,9 +411,9 @@ void somaVetor(int *r,int *a,int *b,int n){
     }
 }
 int main(){
-int a[3]={6,5,6},b[3]={5,3,4},r[3];
-somaVetor(r,a,b,3);
-for(int i=0;i<3;i++){
+  int a[3]={6,5,6},b[3]={5,3,4},r[3];
+  somaVetor(r,a,b,3);
+  for(int i=0;i<3;i++){
         printf("%d\n",*(r+i));
     }
 }
