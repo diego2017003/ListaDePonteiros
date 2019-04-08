@@ -1,7 +1,9 @@
 # ListaDePonteiros
 lista de ponteiros
 Esse repositório é destinado à resolução das questões da lista de ponteiros 
-da Turma de programação avançada t01 do semestre 2019.1 da UFRN campus NATAL 
+da Turma de programação avançada t01 do semestre 2019.1 da UFRN campus NATAL.
+Este arquivo de texto tem por objetivo responder de forma escrita as questões que exigem explicação
+enquanto demosntra os trechos de código utilizados para chegar Às explicações.
 
 ## Questão 01
 ### Qual a Utilidade dos ponteiros para engenharia?
@@ -227,11 +229,11 @@ supondo que x está armazenado no endereço 4092 e que o tamanho de int é difer
 (d)(double) x+1=4092+1*sizeof(double)=4092+8=4100 x+2=4092+2*sizeof(double)=4108 x+3=4092+3*sizeof(double)=4116
 
 ## Questão 11
-## Implementando a 10
+### Implementando a 10
 *resp:* a suposição da 10 erra apenas no caso do inteiro que apresenta 4 bytes
 
 ## Questão 12
-## comandos válidos ou inválidos
+### comandos válidos ou inválidos
 ```c
 aloha[2] = value;
 scanf("%f", &aloha);
@@ -303,6 +305,33 @@ for(i=0;i<n;i++){
    printf("%d",*(v+i));
 }
 free(v);
+return 0;
+}
+```
+## Questão 15
+### utilizando qsort
+*resp:*
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int compara(const void *a,const void *b){//é uma função que compara dois valores retornando um inteiro
+return *(int*)a-*(int*)b;//essa funcao faz parte da chamada da funçao qsort da stdlib
+}
+int main(){
+double tempo;
+int *v,n,i,(*comp)();//dando nome às variáveis que serão utilizadas
+comp=compara;//comp é o ponteiro para a funçao de comparação
+scanf("%d",&n);//pedindo ao usuario o tamanho do vetor
+v = (int *)malloc(n*sizeof(int));//reservando espaço para o vetor v com alocação dinâmica
+for(i=0;i<n;i++){
+   //scanf("%d",(v+i));//inserindo elementos no vetor
+    *(v+i)=n-i;
+}
+qsort(v,n,sizeof(int),comp);//chamada da função qsort usando um ponteiro para a funçao de comparação
+for(i=0;i<n;i++){
+   printf("%d \n",*(v+i));//mostrando elementos ordenados pela função qsort;
+}
+free(v);//liberando o espaço oculpado pelo vetor;
 return 0;
 }
 ```
