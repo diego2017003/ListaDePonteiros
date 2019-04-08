@@ -194,3 +194,65 @@ p = mat++;//o operador ++ é inválido nessa situação
 p = ++mat;//o operador ++ é inválido nessa situação
 x = (*mat)++;//válida, retorna o valor do primeiro elemento de mat apesar do operador ++ não ter utilidade nesse caso
 ```
+## Questão 09
+### O que os programas fazem?
+```c
+//programa 1
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+    printf("%d ",*(vet+i));
+  }
+}
+//programa 2
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+    printf("%X ",vet+i);
+  }
+}
+
+```
+*resp:* o primeiro programa retorna os valores inteiros armazenados dentro do vetor vet
+enquanto que o segundo programa retorna os endereços de cada elemento dentro do vetor vet em hexadecimal;
+## Questão 10
+### os endereços de cada elemento de um vetor a depender do tipo
+*resp:*
+supondo que x está armazenado no endereço 4092 e que o tamanho de int é diferente de float;
+(a)(char) x+1=4092+1*sizeof(char)=4093 x+2=4092+2*sizeof(char)=4094 x+3=4092+3*sizeof(char)=4095
+(b)(int) x+1=4092+1*sizeof(int)=4092+2=4094 x+2=4092+2*sizeof(int)=4096 x+3=4092+3*sizeof(int)=4098
+(c)(float) x+1=4092+1*sizeof(float)=4092+4=4096 x+2=4092+2*sizeof(float)=4100 x+3=4092+3*sizeof(float)=4104
+(d)(double) x+1=4092+1*sizeof(double)=4092+8=4100 x+2=4092+2*sizeof(double)=4108 x+3=4092+3*sizeof(double)=4116
+
+## Questão 11
+## Implementando a 10
+*resp:* a suposição da 10 erra apenas no caso do inteiro que apresenta 4 bytes
+
+## Questão 12
+## comandos válidos ou inválidos
+```c
+aloha[2] = value;
+scanf("%f", &aloha);
+aloha = value";
+printf("%f", aloha);
+coisas[4][4] = aloha[3];
+coisas[5] = aloha;
+pf = value;
+pf = aloha;
+```
+
+*resp:*
+```c
+aloha[2] = value;//válido
+scanf("%f", &aloha);//válido
+//aloha = value;//Errado, float* != float
+printf("%f", aloha);//válido
+coisas[4][4] = aloha[3];//válido
+//coisas[5] = *aloha;//errado, não se pode utilizar essa atribuição
+//pf = value;//Errado, float* != float
+pf = aloha;//válido já que aloha é um vetor e repassa seu endereço nessa atribuição
+printf("%f",*(pf+1));
+
+```
