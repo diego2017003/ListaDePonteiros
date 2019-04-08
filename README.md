@@ -138,3 +138,59 @@ int main() {
 }
 ```
 *resp:* (a)=20;(b)=29.0;(c)=p;(d)=e;(e)=p;(f)=e;(g)=t;(h)=31;(i)=45;(j)=27;(l)=31;(m)=45;(n)=27;
+## questão 06
+### o que se espera que o programa mostre
+```c
+int main(void){
+  float vet[5] = {1.1,2.2,3.3,4.4,5.5};
+  float *f;
+  int i;
+  f = vet;
+  printf("contador/valor/valor/endereco/endereco");
+  for(i = 0 ; i <= 4 ; i++){
+    printf("\ni = %d",i);
+    printf("vet[%d] = %.1f",i, vet[i]);
+    printf("*(f + %d) = %.1f",i, *(f+i));
+    printf("&vet[%d] = %X",i, &vet[i]);
+    printf("(f + %d) = %X",i, f+i);
+  }
+}
+```
+*resp:* é esperado que o programe mostre as cinco linhas seguintes de acordo com os endereços de v
+e dos valores armazenados neles
+   i=0 vet[0] = 1.1 *(f+0) = 1.1 &vet[0] = &v     (f+0)=&v
+   i=1 vet[1] = 2.2 *(f+1) = 2.2 &vet[1] = &(v+1) (f+1)=&(v+1)
+   i=2 vet[2] = 3.3 *(f+2) = 3.3 &vet[2] = &(v+2) (f+2)=&(v+2)
+   i=3 vet[3] = 4.4 *(f+3) = 4.4 &vet[3] = &(v+3) (f+3)=&(v+3)
+   i=4 vet[4] = 5.5 *(f+4) = 5.5 &vet[4] = &(v+4) (f+4)=&(v+4)
+  e o resultado é exatamente o que se esperava, sendo os endereços em hexadecimal; 
+ ## questão 07
+### elemento 2 do vetor pulo
+```c
+*(pulo + 2);
+*(pulo + 4);
+pulo + 4;
+pulo + 2;
+```
+*resp:*
+```c
+printf("%d\n",*(pulo + 2));// é o único que mostra o elemento na posição 2(terceira posição) do vetor pulo
+//printf("%d\n",*(pulo + 4));
+//printf("%d\n",pulo + 4);
+//printf("%d\n",pulo + 2);
+```
+## Questão 08
+### expressões válidas
+```c
+p = mat + 1;
+p = mat++;
+p = ++mat;
+x = (*mat)++;
+```
+*resp:*
+```c
+p = mat + 1;//válida, retorna a posição do segundo elemento de mat 
+p = mat++;//o operador ++ é inválido nessa situação
+p = ++mat;//o operador ++ é inválido nessa situação
+x = (*mat)++;//válida, retorna o valor do primeiro elemento de mat apesar do operador ++ não ter utilidade nesse caso
+```
