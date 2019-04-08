@@ -331,7 +331,7 @@ qsort(v,n,sizeof(int),comp);//chamada da função qsort usando um ponteiro para 
 for(i=0;i<n;i++){
    printf("%d \n",*(v+i));//mostrando elementos ordenados pela função qsort;
 }
-free(v);//liberando o espaço oculpado pelo vetor;
+free(v);//liberando o espaço ocupado pelo vetor;
 return 0;
 }
 ```
@@ -379,7 +379,22 @@ int main()
     {
         printf("%d\n",*(v+i));//mostrando elementos ordenados pela função ordenaVetor;
     }
-    free(v);//liberando o espaço oculpado pelo vetor;
+    free(v);//liberando o espaço ocupado pelo vetor;
     return 0;
 }
+```
+## Questão 17
+### comparando o tempo de resposta da função ordena vetor em relação à função qsort
+*resp:*
+Usando a função clock() da biblioteca time.h para tirar a diferença entre o tempo de inicio e de termino de execu~ção 
+das funções qsort e ordenaVetor foi observado que não há diferença significativa quando se trata de valores pequenos para ordenar. entretanto, quando são utilizados valores grandes já se observa uma diferença entre o tempo de execução das funções: foi testado o pior caso em que o vetor está em ordem decrescente, e para o numero 1234 de elementos a função qsort apresentou um desempeho 10 vezes melhor do que a função ordenaVetor;
+````c
+inicioOV =clock();//capturando o clock do instante inicial em que a função ordenaVetor é chamada
+ordenaVetor(v1,n,comp); //chamada da função ordenaVetor usando um ponteiro para a funçao de comparação
+fimOV =clock()-inicioOV;//capturando o clock do instante final em relação ao inicial da função ordenaVetor
+inicioQS=clock();//capturando o clock do instante inicial em que a função Qsort é chamada
+qsort(v2,n,sizeof(int),comp);//chamada da função qsort usando um ponteiro para a funçao de comparação
+fimQS =clock()-inicioQS;//capturando o clock do instante final em relação ao inicial da função qsort
+tempoOV=(double)(fimOV)/CLOCKS_PER_SEC;//tempo que a função ordena vetor levou
+tempoQS=(double)(fimQS)/CLOCKS_PER_SEC;//tempo que a função Qsort levou
 ```
