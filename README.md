@@ -256,3 +256,20 @@ pf = aloha;//válido já que aloha é um vetor e repassa seu endereço nessa atr
 printf("%f",*(pf+1));
 
 ```
+## Questão 13
+### ponteiro para uma função
+*resp:*
+um ponteiro para uma função é um ponteiro que aponta para o endereço de uma função
+permitindo que as funcionalidades da função possam ser acessadas a partir do ponteiro
+```c
+int soma(int a,int b){
+return (a+b);
+}
+int main(){
+int (*p)(),s,a=2,b=4;//(*p)() é um ponteiro para uma função
+p=soma;//atribui ao ponteiro p a função soma
+s=p(a,b);
+printf("%d",s);
+return 0;
+}
+```
